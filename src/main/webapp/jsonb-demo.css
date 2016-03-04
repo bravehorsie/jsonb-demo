@@ -1,0 +1,7 @@
+.red {background:red;}
+.blue {background:blue;}
+.yellow {background:yellow;}
+
+.content {padding:40px;}
+
+.log {max-height: 50%;overflow-y: scroll;}
