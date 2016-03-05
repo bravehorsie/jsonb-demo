@@ -1,4 +1,4 @@
-package com.oracle.embedded;
+package com.oracle.jsonbdemo.embedded;
 
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.server.Server;

@@ -1,4 +1,4 @@
-package com.oracle.model;
+package com.oracle.jsonbdemo.model;
 
 /**
  * Characteristics of an item. Strength, vitality, etc.

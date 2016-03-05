@@ -4,4 +4,6 @@
 
 .content {padding:40px;}
 
-.log {max-height: 50%;overflow-y: scroll;}
+.log {height: 400px;overflow-y: scroll;}
+#stats-summary {padding: 0 0 10px 0; margin: 0;}
+#hero-name {padding: 0; margin: 0;}

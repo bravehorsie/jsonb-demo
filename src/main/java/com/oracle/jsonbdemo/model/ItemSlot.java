@@ -1,4 +1,4 @@
-package com.oracle.model;
+package com.oracle.jsonbdemo.model;
 
 /**
  * Slot to equip item in.

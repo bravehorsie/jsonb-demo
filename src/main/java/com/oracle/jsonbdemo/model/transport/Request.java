@@ -1,6 +1,6 @@
-package com.oracle.model.transport;
+package com.oracle.jsonbdemo.model.transport;
 
-import com.oracle.model.Hero;
+import com.oracle.jsonbdemo.model.Hero;
 
 /**
  * Request with hero from frontend to unmarshall.

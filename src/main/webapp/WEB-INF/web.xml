@@ -11,7 +11,7 @@
 
   <servlet>
     <servlet-name>JsonbDemo</servlet-name>
-    <servlet-class>com.oracle.JsonbDemoServlet</servlet-class>
+    <servlet-class>com.oracle.jsonbdemo.JsonbDemoServlet</servlet-class>
   </servlet>
 
     <welcome-file-list>

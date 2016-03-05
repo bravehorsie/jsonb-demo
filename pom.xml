@@ -61,7 +61,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.oracle.embedded.JettyStarter</mainClass>
+                            <mainClass>com.oracle.jsonbdemo.embedded.JettyStarter</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

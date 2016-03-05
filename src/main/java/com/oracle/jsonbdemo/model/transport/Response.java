@@ -1,7 +1,7 @@
-package com.oracle.model.transport;
+package com.oracle.jsonbdemo.model.transport;
 
-import com.oracle.model.CombatLog;
-import com.oracle.model.Hero;
+import com.oracle.jsonbdemo.model.CombatLog;
+import com.oracle.jsonbdemo.model.Hero;
 
 /**
  * Response from backend.

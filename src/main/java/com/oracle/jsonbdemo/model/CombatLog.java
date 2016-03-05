@@ -1,4 +1,4 @@
-package com.oracle.model;
+package com.oracle.jsonbdemo.model;
 
 import java.util.ArrayList;
 import java.util.List;
