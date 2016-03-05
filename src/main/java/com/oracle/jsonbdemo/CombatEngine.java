@@ -24,11 +24,9 @@ public class CombatEngine {
     public CombatLog sendHeroFighting(Hero hero) {
         CombatLog combatLog = new CombatLog();
         String heroName = hero.getName();
-        combatLog.getMessages().add(heroName + " encounters group of skeletons with a spider queen.");
-        combatLog.getMessages().add(heroName + " breaks spines of all five skeletons in one sword swing.");
-        combatLog.getMessages().add(heroName + " pours a spider queen with a canister of gas and burns it to ashes.");
-        combatLog.getMessages().add("That was way too easy fight for "+heroName + ".");
-        combatLog.getMessages().add(heroName + " gained 1250 experience.");
+        for (String msg : db.getCombatLog()) {
+            combatLog.getMessages().add(String.format(msg, heroName));
+        }
         return combatLog;
     }
 

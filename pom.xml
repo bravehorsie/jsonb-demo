@@ -56,6 +56,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
+                    <descriptor>src/main/resources/assembly.xml</descriptor>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
@@ -89,5 +90,16 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main</directory>
+                <excludes>
+                    <exclude>resources</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
 </project>

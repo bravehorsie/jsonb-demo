@@ -3,10 +3,7 @@ package com.oracle.jsonbdemo;
 import com.oracle.jsonbdemo.model.ItemSlot;
 
 import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Game database
@@ -21,8 +18,40 @@ public class Db {
 
     private final Map<ItemSlot, List<String>> lootDb;
 
+    private final List<String[]> combatLogDb;
+
     private Db() {
         this.lootDb = initialiseLoot();
+        this.combatLogDb = initialiseCombatLog();
+    }
+
+    private List<String[]> initialiseCombatLog() {
+        List<String[]> result = new ArrayList<>();
+        String[] skeletonCombatLog = new String[5];
+        skeletonCombatLog[0] = "%s encounters group of skeletons with a spider queen.";
+        skeletonCombatLog[1] = "%s breaks spines of all five skeletons in one sword swing.";
+        skeletonCombatLog[2] = "%s pours a spider queen with a canister of gas and burns it to ashes.";
+        skeletonCombatLog[3] = "That was way too easy fight for %s.";
+        skeletonCombatLog[4] = "%s gained 1250 experience.";
+        result.add(skeletonCombatLog);
+
+        String[] deathAngelsCombatLog = new String[3];
+        deathAngelsCombatLog[0] = "%s encounters group of Death Angels.";
+        deathAngelsCombatLog[1] = "Death Angels are flying away, when they seen %s.";
+        deathAngelsCombatLog[2] = "%s gained 1111 experience.";
+        result.add(deathAngelsCombatLog);
+
+        String[] zombieLog = new String[7];
+        zombieLog[0] = "%s encounters group of zombies with a Grotesque.";
+        zombieLog[1] = "%s smashes heads of zombies with a shield. ";
+        zombieLog[2] = "Zombies are way too slow and weak to resist %s's attack.";
+        zombieLog[3] = "%s Jumps to a Grotesque and and rips its abdominal.";
+        zombieLog[4] = "Guts of grotesque falls on the floor.";
+        zombieLog[5] = "Grotesque is unable to move and dies in a slow pain.";
+        zombieLog[6] = "Gained 2100 experience.";
+        result.add(zombieLog);
+
+        return result;
     }
 
     private Map<ItemSlot, List<String>> initialiseLoot() {
@@ -50,5 +79,9 @@ public class Db {
     public String getItem(ItemSlot slot) {
         final List<String> itemNames = lootDb.get(slot);
         return itemNames.get(random.nextInt(itemNames.size()));
+    }
+
+    public String[] getCombatLog() {
+        return combatLogDb.get(random.nextInt(combatLogDb.size()));
     }
 }
