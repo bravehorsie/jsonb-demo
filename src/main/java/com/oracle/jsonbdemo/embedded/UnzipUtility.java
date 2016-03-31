@@ -32,10 +32,6 @@ public class UnzipUtility {
         // iterates over entries in the zip file
         while (entry != null) {
             String filePath = destDirectory + File.separator + entry.getName();
-            if (!filePath.contains("/webapp/")) {
-                entry = zipIn.getNextEntry();
-                continue;
-            }
             if (!entry.isDirectory()) {
                 // if the entry is a file, extracts it
                 extractFile(zipIn, filePath);

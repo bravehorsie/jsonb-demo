@@ -27,7 +27,7 @@ $.siteHandler = {
         $("#items>table>tbody").remove();
         $("#items>table").append($("<tbody></tbody>"));
 
-        $.each(data.hero.items, function (key, value) {
+        $.each(data.hero.hero_items, function (key, value) {
             console.log('key: ' + key + '\n' + 'value: ' + value);
             var statsString = "";
             $(value.stats).each(function (index) {
@@ -37,7 +37,7 @@ $.siteHandler = {
         });
     },
     parseTotals: function(data) {
-        $('#stats-summary').replaceWith($('<h2 id="stats-summary"><small>Strength: ' + data.hero.totalStrength + ', Vitality: '+data.hero.totalVitality+'</small></h2>'));
+        $('#stats-summary').replaceWith($('<h2 id="stats-summary"><small>Strength: ' + data.hero.total_strength + ', Vitality: '+data.hero.total_vitality+'</small></h2>'));
     }
 }
 

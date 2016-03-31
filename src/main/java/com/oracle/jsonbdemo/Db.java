@@ -1,6 +1,6 @@
 package com.oracle.jsonbdemo;
 
-import com.oracle.jsonbdemo.model.ItemSlot;
+import com.oracle.jsonbdemo.model.ItemSlotEnum;
 
 import java.security.SecureRandom;
 import java.util.*;
@@ -16,7 +16,7 @@ public class Db {
 
     private static final SecureRandom random = new SecureRandom();
 
-    private final Map<ItemSlot, List<String>> lootDb;
+    private final Map<ItemSlotEnum, List<String>> lootDb;
 
     private final List<String[]> combatLogDb;
 
@@ -37,34 +37,39 @@ public class Db {
 
         String[] deathAngelsCombatLog = new String[3];
         deathAngelsCombatLog[0] = "%s encounters group of Death Angels.";
-        deathAngelsCombatLog[1] = "Death Angels are flying away, when they seen %s.";
+        deathAngelsCombatLog[1] = "Death Angels are horrified by Jason's s mask, they are flying away from %s as fast as possible.";
         deathAngelsCombatLog[2] = "%s gained 1111 experience.";
         result.add(deathAngelsCombatLog);
 
-        String[] zombieLog = new String[7];
-        zombieLog[0] = "%s encounters group of zombies with a Grotesque.";
-        zombieLog[1] = "%s smashes heads of zombies with a shield. ";
-        zombieLog[2] = "Zombies are way too slow and weak to resist %s's attack.";
-        zombieLog[3] = "%s Jumps to a Grotesque and and rips its abdominal.";
-        zombieLog[4] = "Guts of grotesque falls on the floor.";
-        zombieLog[5] = "Grotesque is unable to move and dies in a slow pain.";
-        zombieLog[6] = "Gained 2100 experience.";
+        String[] zombieLog = new String[4];
+        zombieLog[0] = "%s encounters group of zombies.";
+        zombieLog[1] = "%s jumps into zombies smashing their heads with his heavy shield.";
+        zombieLog[2] = "Zombies are way too slow and weak to resist such a fast and destructive attack.";
+        zombieLog[3] = "Gained 2100 experience.";
         result.add(zombieLog);
+
+        String[] olympicLog = new String[5];
+        olympicLog[0] = "%s encounters an epic olympic barbell loaded with countless red plates.";
+        olympicLog[1] = "%s engages a barbell, sits down with a straight back into olympic snatch starting position.";
+        olympicLog[2] = "Snatching a barbell above his head, %s jumps underneath it into a full deep squat.";
+        olympicLog[3] = "With a barbell locked in arms above his head, %s pushes with his massive glutes and hamstrings to stand upright.";
+        olympicLog[4] = "All monsters in 50 yard radius are mesmerized and cannot move or make any action for 20sec.";
+        result.add(olympicLog);
 
         return result;
     }
 
-    private Map<ItemSlot, List<String>> initialiseLoot() {
-        Map<ItemSlot, List<String>> items = new HashMap<>();
-        items.put(ItemSlot.BELT, Arrays.asList("Vigilante belt", "Highlord Kruul's Final Curse", "Al'maiesh, the Cord of Hope"));
-        items.put(ItemSlot.BOOTS, Arrays.asList("Ice walkers","Aman'Thul's Stride"));
-        items.put(ItemSlot.CHEST, Arrays.asList("Tyrael's might", "Heart of Iron", "Cindercoat"));
-        items.put(ItemSlot.GLOVES, Arrays.asList("Bear claws", "Gloves of whorship"));
-        items.put(ItemSlot.HEAD, Arrays.asList("Bad mojo mask", "Andariel's visage", "Gaze of Justice"));
-        items.put(ItemSlot.NECK, Arrays.asList("Binding of the lost", "Eye of Etlich", "Hellfire amulet"));
-        items.put(ItemSlot.SHOULDERS, Arrays.asList("Shiny plates", "Death watch mantle"));
-        items.put(ItemSlot.PANTS, Arrays.asList("Hexing pants of Mr. Yan", "Death's bargain"));
-        items.put(ItemSlot.WEAPON, Arrays.asList("Sword of the Skeleton king", "Butcher's Carver", "Maximus"));
+    private Map<ItemSlotEnum, List<String>> initialiseLoot() {
+        Map<ItemSlotEnum, List<String>> items = new HashMap<>();
+        items.put(ItemSlotEnum.BELT, Arrays.asList("Vigilante belt", "Highlord Kruul's Final Curse", "Al'maiesh, the Cord of Hope"));
+        items.put(ItemSlotEnum.BOOTS, Arrays.asList("Ice walkers","Aman'Thul's Stride"));
+        items.put(ItemSlotEnum.CHEST, Arrays.asList("Tyrael's might", "Heart of Iron", "Cindercoat"));
+        items.put(ItemSlotEnum.GLOVES, Arrays.asList("Bear claws", "Gloves of whorship"));
+        items.put(ItemSlotEnum.HEAD, Arrays.asList("Bad mojo mask", "Andariel's visage", "Gaze of Justice"));
+        items.put(ItemSlotEnum.NECK, Arrays.asList("Binding of the lost", "Eye of Etlich", "Hellfire amulet"));
+        items.put(ItemSlotEnum.SHOULDERS, Arrays.asList("Shiny plates", "Death watch mantle"));
+        items.put(ItemSlotEnum.PANTS, Arrays.asList("Hexing pants of Mr. Yan", "Death's bargain"));
+        items.put(ItemSlotEnum.WEAPON, Arrays.asList("Sword of the Skeleton king", "Butcher's Carver", "Maximus"));
 
         return items;
     }
@@ -76,12 +81,12 @@ public class Db {
     /**
      * Get random item for a slot.
      */
-    public String getItem(ItemSlot slot) {
+    public String getRandomItemForSlot(ItemSlotEnum slot) {
         final List<String> itemNames = lootDb.get(slot);
         return itemNames.get(random.nextInt(itemNames.size()));
     }
 
-    public String[] getCombatLog() {
+    public String[] getRandomCombatLog() {
         return combatLogDb.get(random.nextInt(combatLogDb.size()));
     }
 }

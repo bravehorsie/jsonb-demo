@@ -41,18 +41,20 @@ public class JsonbDemoServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //get JSON body from POST
-        String jsonBody = req.getReader().lines().reduce("", (accumulator, actual) -> accumulator + actual);
+    protected void doPost(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws ServletException, IOException {
 
         //Unmarshall json to Request object with Hero inside.
-        Request request = jsonb.fromJson(jsonBody, Request.class);
+        Request request = jsonb.fromJson(httpRequest.getInputStream(), Request.class);
         Hero hero = request.getHero();
-        CombatLog combatLog = combatEngine.sendHeroFighting(hero);
-        combatEngine.dropLoot(hero);
+
+
+        //Generate combat log and loot.
+        CombatLog combatLog = combatEngine.generateCombatLog(hero);
+        combatEngine.generateLoot(hero);
+
 
         //Marshall our hero back to JSON object.
-        resp.getWriter().write(jsonb.toJson(new Response(hero, combatLog)));
+        jsonb.toJson(new Response(hero, combatLog), Response.class, httpResponse.getOutputStream());
     }
 
 }
